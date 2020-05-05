@@ -1,0 +1,15 @@
+$text-color: white;
+$back-ground-color: #2364aa;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  color: $text-color;
+  background-color: $back-ground-color;
+  padding: 1rem 0;
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
