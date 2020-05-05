@@ -1,0 +1,33 @@
+//variables
+$button-padding: 0.5rem 1rem;
+$font-size: 18px;
+$button-color: $color-text-lighten;
+$button-bgcolor: $color-primary;
+$button-bgcolor-hover: $color-lighten;
+//mixins
+
+//structure
+%button {
+  display: inline-block;
+  padding: $button-padding;
+  font-size: $font-size;
+  font-weight: bold;
+  color: $button-color;
+  text-transform: uppercase;
+  background-color: $button-bgcolor;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+//relationships
+
+//themes
+
+//exported selectors
+.button {
+  @extend %button;
+
+  &:hover {
+    background-color: $button-bgcolor-hover;
+  }
+}

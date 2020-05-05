@@ -1,6 +1,6 @@
 @import '~normalize.css';
 @import '~swiper/css/swiper.min.css';
 
+@import './layout/module';
+@import './base/module';
 @import './components/module';
-
-$red-color: red;
