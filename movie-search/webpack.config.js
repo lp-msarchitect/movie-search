@@ -20,14 +20,28 @@ module.exports = (env, options) => {
     module: {
       rules: [
         {
-          test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        },
-        {
           test: /\.(png|svg|jpe?g|gif)$/,
           use: [
             {
               loader: 'file-loader',
+              options: {
+                outputPath: './images/',
+                name: '[name].[ext]',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.scss$/,
+          use: [
+            { loader: MiniCssExtractPlugin.loader },
+            { loader: 'css-loader' },
+            { loader: 'resolve-url-loader' },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
             },
           ],
         },
