@@ -1,7 +1,8 @@
-export default class Movie {
+import Component from './Component';
+
+export default class Movie extends Component {
   constructor(movie, global) {
-    this.global = global;
-    this.html = `
+    const html = `
     <div class="swiper-slide">
         <a class="swiper-slide__title" href="${movie.galleryURL}">${movie.title}</a>
         <img
@@ -14,18 +15,6 @@ export default class Movie {
         <span>${movie.imdbRating}</span>
     </div>
     `;
-
-    this.element = null;
-  }
-
-  get element() {
-    return this.element || this.createElement();
-  }
-
-  createElement() {
-    const tmpElement = this.global.createElement('div');
-    tmpElement.innerHTML = this.html;
-    this.element = tmpElement.firstChild;
-    return this.element;
+    super(html, global);
   }
 }
