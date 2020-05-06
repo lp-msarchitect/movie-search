@@ -6,4 +6,8 @@ export default class Model {
 
     return fetch(url).then((res) => res.json());
   }
+
+  getMovies(request) {
+    // TODO: get list of movies (title, poster, rating, year) from omdp api
+  }
 }

@@ -1,18 +1,8 @@
-import Swiper from 'swiper';
+import { Controller } from 'swiper/js/swiper.esm';
+import Model from './js/Model';
+import View from './js/View';
 
-const mySwiper = new Swiper('.swiper-container', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
+const model = new Model();
+const view = new View('app');
+const controller = new Controller(model, view);
+controller.init();
