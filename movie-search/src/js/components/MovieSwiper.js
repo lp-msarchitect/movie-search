@@ -1,5 +1,6 @@
 import Swiper from 'swiper';
 import Component from './Component';
+import Movie from './Movie';
 
 export default class MovieSwiper extends Component {
   constructor(global) {
@@ -9,40 +10,6 @@ export default class MovieSwiper extends Component {
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide">
-                    <a class="swiper-slide__title" href="#">Dream House</a>
-                    <img
-                        src="https://via.placeholder.com/445x300"
-                        alt=""
-                        height="445"
-                        width="300"
-                    />
-                    <span>2011</span>
-                    <span>6.0</span>
-                    </div>
-                    <div class="swiper-slide">
-                    <a class="swiper-slide__title" href="#">A Nightmare on Elm</a>
-                    <img
-                        src="https://via.placeholder.com/445x300"
-                        alt=""
-                        height="445"
-                        width="300"
-                    />
-                    <span>1987</span>
-                    <span>6.6</span>
-                    </div>
-                    <div class="swiper-slide">
-                    <a class="swiper-slide__title" href="#">Dream House</a>
-                    <img
-                        src="https://via.placeholder.com/445x300"
-                        alt=""
-                        height="445"
-                        width="300"
-                    />
-                    <span>2011</span>
-                    <span>6.0</span>
-                    </div>
-                    ...
                 </div>
                 <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
@@ -54,6 +21,11 @@ export default class MovieSwiper extends Component {
     `;
 
     super(html, global);
+  }
+
+  addMovie(movieInfo) {
+    const movie = new Movie(movieInfo);
+    this.element.querySelector('.swiper-wrapper').appendChild(movie.element);
   }
 
   createElement() {
