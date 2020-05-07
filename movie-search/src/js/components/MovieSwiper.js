@@ -24,8 +24,12 @@ export default class MovieSwiper extends Component {
   }
 
   addMovie(movieInfo) {
-    const movie = new Movie(movieInfo);
+    const movie = new Movie(movieInfo, this.global);
     this.element.querySelector('.swiper-wrapper').appendChild(movie.element);
+  }
+
+  clear() {
+    this.element.querySelector('.swiper-wrapper').innerHTML = '';
   }
 
   createElement() {

@@ -1,13 +1,15 @@
-import Swiper from 'swiper';
-// TODO: MovieComponent
-// TODO: MoviesSliderComponent
 // TODO: SearchComponent
 // TODO: LoaderComponent
 // TODO: ErrorComponent
 
+import MovieSwiper from './components/MovieSwiper';
+import Search from './components/Search';
+
 export default class View {
-  constructor(rootID) {
-    this.rootID = rootID;
+  constructor(rootID, global) {
+    this.rootElement = document.getElementById(rootID);
+    this.global = global;
+    this.components = {};
   }
 
   showLoader() {
@@ -15,29 +17,17 @@ export default class View {
   }
 
   init() {
-    // TODO: show initial state;
+    this.components.search = new Search(this.global);
+    this.rootElement.appendChild(this.components.search.element);
+    this.components.movieSwiper = new MovieSwiper(this.global);
+    this.rootElement.appendChild(this.components.movieSwiper.element);
   }
 
   showMovies(movies) {
     // TODO: show Movies on the page;
-  }
-
-  initSwiper() {
-    const mySwiper = new Swiper('.swiper-container', {
-      // Optional parameters
-      direction: 'horizontal',
-      loop: true,
-
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+    this.components.movieSwiper.clear();
+    movies.forEach((movie) => {
+      this.components.movieSwiper.addMovie(movie);
     });
   }
 }

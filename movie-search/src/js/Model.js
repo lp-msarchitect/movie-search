@@ -7,7 +7,13 @@ export default class Model {
     return fetch(url).then((res) => res.json());
   }
 
-  getMovies(request) {
+  getMoviesPage(request = '', page = 1) {
+    this.currentPage = page;
+    return this.getData(request, page).then((data) => {
+      return new Promise(function (resolve, reject) {
+        resolve(data.Search);
+      });
+    });
     // TODO: get list of movies (title, poster, rating, year) from omdp api
   }
 }

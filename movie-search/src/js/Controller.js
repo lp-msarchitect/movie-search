@@ -6,12 +6,26 @@ export default class Controller {
 
   init() {
     this.view.init();
-    const movies = this.model.getMovies('request');
-    view.showMovies(movies);
+    this.view.components.search.subscribe((value) => {
+      this.searchMovies(value);
+    });
+    this.searchMovies('dream');
   }
 
   searchMovies(title) {
-    // TODO search first page of movies, show loader than result or error msg
+    this.model.getMoviesPage(title, 1).then((movies) => {
+      const moviesInfo = movies.map((movie) => {
+        return {
+          title: movie.Title,
+          poster: movie.Poster,
+          year: movie.Year,
+          rating: 'null', // TODO getRating
+        };
+      });
+
+      this.view.showMovies(moviesInfo);
+      // TODO search first page of movies, show loader than result or error msg
+    });
   }
 
   getMoreMovies() {

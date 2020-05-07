@@ -6,13 +6,13 @@ export default class Movie extends Component {
     <div class="swiper-slide">
         <a class="swiper-slide__title" href="${movie.galleryURL}">${movie.title}</a>
         <img
-        src="${movie.imageUrl}"
+        src="${movie.poster}"
         alt="${movie.title} poster"
         height="445"
         width="300"
         />
-        <span>${movie.releaseYear}</span>
-        <span>${movie.imdbRating}</span>
+        <span>${movie.year}</span>
+        <span>${movie.rating}</span>
     </div>
     `;
     super(html, global);
