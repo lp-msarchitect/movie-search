@@ -11,8 +11,6 @@ export default class MovieSwiper extends Component {
                 <div class="swiper-wrapper">
                     <!-- Slides -->
                 </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
 
                 <!-- If we need navigation buttons -->
                 <div class="swiper-button-prev"></div>
@@ -25,11 +23,11 @@ export default class MovieSwiper extends Component {
 
   addMovie(movieInfo) {
     const movie = new Movie(movieInfo, this.global);
-    this.element.querySelector('.swiper-wrapper').appendChild(movie.element);
+    this.element.swiper.appendSlide(movie.element);
   }
 
   clear() {
-    this.element.querySelector('.swiper-wrapper').innerHTML = '';
+    this.element.swiper.removeAllSlides();
   }
 
   createElement() {
@@ -38,17 +36,27 @@ export default class MovieSwiper extends Component {
     const mySwiper = new Swiper(element, {
       // Optional parameters
       direction: 'horizontal',
-      loop: true,
-
-      // If we need pagination
-      pagination: {
-        el: element.querySelector('.swiper-pagination'),
-      },
-
+      loop: false,
+      slidesPerView: 1,
+      // updateOnWindowResize: true,
       // Navigation arrows
       navigation: {
         nextEl: element.querySelector('.swiper-button-next'),
         prevEl: element.querySelector('.swiper-button-prev'),
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        860: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
       },
     });
 
