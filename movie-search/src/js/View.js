@@ -56,9 +56,7 @@ export default class View {
     this.components.movieSwiper.clear();
   }
 
-  showMovies(movies) {
-    movies.forEach((movie) => {
-      this.components.movieSwiper.addMovie(movie);
-    });
+  async showMovies(movies) {
+    this.components.movieSwiper.addMovies(movies);
   }
 }

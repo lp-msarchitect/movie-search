@@ -27,19 +27,19 @@ export default class Model {
         return movie;
       })
     );
+  }
 
-    // const url = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=7f33cc87`;
+  async getMaxPage(request) {
+    const data = await this.getData(request);
 
-    // const res = await fetch(url);
-    // const rating = await res.json();
-    // movie.rating = rating;
-    // console.log('rating ', rating);
-    // return movie;
+    return Math.ceil(data.totalResults / 10);
   }
 
   getMoviesPage(request = '', page = 1) {
     this.currentPage = page;
     return this.getData(request, page).then((data) => {
+      console.log('response data: ', data);
+
       return new Promise(function (resolve, reject) {
         if (data.Response === 'True') {
           resolve(data.Search);

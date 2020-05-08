@@ -3,16 +3,18 @@ export default class Controller {
     this.model = model;
     this.view = view;
     this.currentPage = 1;
+    this.maxPage = 1;
     this.currentRequest = 'dream';
   }
 
   init() {
     this.view.init();
-    this.view.components.search.subscribe((request) => {
+    this.view.components.search.subscribe(async (request) => {
       this.view.clearStatus();
       this.translate(request)
         .then((title) => {
           this.currentRequest = title;
+          this.model.getMaxPage(title).then((max) => (this.maxPage = max));
           this.view.components.movieSwiper.clear();
           this.searchMovies(title);
         })
@@ -23,8 +25,14 @@ export default class Controller {
 
     this.view.components.movieSwiper.on('reachEnd', () => {
       console.log('reachEND!!!');
-      this.searchMovies(this.currentRequest, this.currentPage + 1);
+      if (this.currentPage < this.maxPage) {
+        this.searchMovies(this.currentRequest, this.currentPage + 1);
+      }
     });
+
+    this.model
+      .getMaxPage(this.currentRequest)
+      .then((max) => (this.maxPage = max));
     this.searchMovies(this.currentRequest, this.currentPage);
   }
 
@@ -70,8 +78,7 @@ export default class Controller {
         });
       })
       .then((moviesInfo) => {
-        this.view.hideLoader();
-        this.view.showMovies(moviesInfo);
+        this.view.showMovies(moviesInfo).then(() => this.view.hideLoader());
       })
       .catch((error) => {
         this.view.showError(error);

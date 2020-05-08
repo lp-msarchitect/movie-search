@@ -21,9 +21,19 @@ export default class MovieSwiper extends Component {
     super(html, global);
   }
 
-  addMovie(movieInfo) {
-    const movie = new Movie(movieInfo, this.global);
-    this.swiper.appendSlide(movie.element);
+  async addMovies(movies) {
+    const promises = movies.map((movieInfo) => {
+      const movie = new Movie(movieInfo, this.global);
+      return movie.loadImage();
+    });
+
+    movies = await Promise.all(promises);
+
+    movies.forEach((movie) => {
+      this.swiper.appendSlide(movie.element);
+    });
+
+    return movies;
   }
 
   clear() {
