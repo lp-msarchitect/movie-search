@@ -3,7 +3,7 @@ import Component from './Component';
 export default class Search extends Component {
   constructor(global) {
     const html = `
-                <form class="search" id="search-form">
+                <form class="search" id="search-form" autocomplete="off">
                     <input class="search__input" id="search-input" type="text" placeholder="Search movie"/>
                     <div class="search__controls">
                     <button class="search__control search__control--clear" type="reset"></button>
