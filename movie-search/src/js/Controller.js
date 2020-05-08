@@ -13,6 +13,7 @@ export default class Controller {
   }
 
   searchMovies(title) {
+    this.view.showLoader();
     this.model.getMoviesPage(title, 1).then((movies) => {
       const moviesInfo = movies.map((movie) => {
         return {
@@ -22,7 +23,7 @@ export default class Controller {
           rating: 'null', // TODO getRating
         };
       });
-
+      this.view.hideLoader();
       this.view.showMovies(moviesInfo);
       // TODO search first page of movies, show loader than result or error msg
     });
