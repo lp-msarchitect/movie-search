@@ -4,7 +4,7 @@ export default class Movie extends Component {
   constructor(movie, global) {
     const html = `
     <div class="swiper-slide">
-        <a class="swiper-slide__title" href="${movie.galleryURL}">${movie.title}</a>
+        <a class="swiper-slide__title" href="https://www.imdb.com/title/${movie.id}/" target="_blank">${movie.title}</a>
         <img
         src="${movie.poster}"
         alt="${movie.title} poster"

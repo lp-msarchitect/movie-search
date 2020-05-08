@@ -18,6 +18,7 @@ export default class Controller {
       const moviesInfo = movies.map((movie) => {
         return {
           title: movie.Title,
+          id: movie.imdbID,
           poster: movie.Poster,
           year: movie.Year,
           rating: 'null', // TODO getRating
