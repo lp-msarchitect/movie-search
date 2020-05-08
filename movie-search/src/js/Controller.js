@@ -41,26 +41,35 @@ export default class Controller {
     this.view.showLoader();
     this.model
       .getMoviesPage(title, 1)
+      .then((movs) => {
+        console.log(movs);
+
+        return this.model.setMoviesRating(movs);
+      })
       .then((movies) => {
-        const moviesInfo = movies.map((movie) => {
+        console.log(movies);
+
+        return movies.map((movie) => {
           return {
             title: movie.Title,
             id: movie.imdbID,
             poster: movie.Poster,
             year: movie.Year,
-            rating: 'null', // TODO getRating
+            rating: movie.rating, // TODO getRating
           };
         });
+      })
+      .then((moviesInfo) => {
         this.view.hideLoader();
         this.view.showMovies(moviesInfo);
+        // this.view.hideLoader();
+        // this.view.showMovies(moviesInfo);
       })
       .catch((error) => {
         this.view.showError(error);
         this.view.hideLoader();
       });
   }
-
-  getMoviesWithRating() {}
 
   getMoreMovies() {
     // TODO search next page of movies and show

@@ -17,12 +17,30 @@ export default class Model {
       });
   }
 
+  async setMoviesRating(movies) {
+    return await Promise.all(
+      movies.map(async (movie) => {
+        const url = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=7f33cc87`;
+        const res = await fetch(url);
+        const json = await res.json();
+        movie.rating = json.imdbRating;
+        return movie;
+      })
+    );
+
+    // const url = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=7f33cc87`;
+
+    // const res = await fetch(url);
+    // const rating = await res.json();
+    // movie.rating = rating;
+    // console.log('rating ', rating);
+    // return movie;
+  }
+
   getMoviesPage(request = '', page = 1) {
     this.currentPage = page;
     return this.getData(request, page).then((data) => {
       return new Promise(function (resolve, reject) {
-        console.log(data);
-
         if (data.Response === 'True') {
           resolve(data.Search);
         } else {
