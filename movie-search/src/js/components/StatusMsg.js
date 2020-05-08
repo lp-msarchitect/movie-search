@@ -12,10 +12,16 @@ export default class StatusMsg extends Component {
   }
 
   showError(msg) {
+    this.clear();
     if (!this.element.classList.contains('status--error')) {
       this.element.classList.add('status--error');
     }
 
+    this.element.querySelector('.status__message').innerHTML = msg;
+  }
+
+  show(msg) {
+    this.clear();
     this.element.querySelector('.status__message').innerHTML = msg;
   }
 

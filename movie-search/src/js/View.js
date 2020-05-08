@@ -20,7 +20,14 @@ export default class View {
     this.components.status.showError(errorMsg);
   }
 
+  showInfo(msg) {
+    console.log('show info: ', msg);
+    this.components.status.show(msg);
+  }
+
   clearStatus() {
+    console.log('clear');
+
     this.components.status.clear();
   }
 
@@ -46,7 +53,6 @@ export default class View {
   }
 
   showMovies(movies) {
-    this.clearStatus();
     this.components.movieSwiper.clear();
     movies.forEach((movie) => {
       this.components.movieSwiper.addMovie(movie);

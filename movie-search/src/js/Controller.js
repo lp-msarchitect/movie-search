@@ -7,9 +7,34 @@ export default class Controller {
   init() {
     this.view.init();
     this.view.components.search.subscribe((value) => {
-      this.searchMovies(value);
+      this.view.clearStatus();
+      this.translate(value)
+        .then((title) => {
+          this.searchMovies(title);
+        })
+        .catch((error) => {
+          this.view.showError(error);
+        });
     });
     this.searchMovies('dream');
+  }
+
+  translate(str) {
+    return new Promise((resolve, reject) => {
+      if (/[а-я]/i.test(str)) {
+        this.model
+          .getTranslate(str)
+          .then((res) => {
+            this.view.showInfo(`Showing results for ${res}`);
+            console.log('res: ', res);
+
+            resolve(res);
+          })
+          .catch((err) => reject(err));
+      } else {
+        resolve(str);
+      }
+    });
   }
 
   searchMovies(title) {
@@ -28,11 +53,10 @@ export default class Controller {
         });
         this.view.hideLoader();
         this.view.showMovies(moviesInfo);
-        // TODO search first page of movies, show loader than result or error msg
       })
       .catch((error) => {
-        this.view.hideLoader();
         this.view.showError(error);
+        this.view.hideLoader();
       });
   }
 
