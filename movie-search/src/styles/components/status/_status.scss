@@ -1,0 +1,12 @@
+.status {
+  width: 100%;
+  height: 3rem;
+
+  &__message {
+    text-align: center;
+  }
+
+  &--error {
+    color: red;
+  }
+}

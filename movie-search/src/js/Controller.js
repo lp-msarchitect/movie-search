@@ -14,21 +14,29 @@ export default class Controller {
 
   searchMovies(title) {
     this.view.showLoader();
-    this.model.getMoviesPage(title, 1).then((movies) => {
-      const moviesInfo = movies.map((movie) => {
-        return {
-          title: movie.Title,
-          id: movie.imdbID,
-          poster: movie.Poster,
-          year: movie.Year,
-          rating: 'null', // TODO getRating
-        };
+    this.model
+      .getMoviesPage(title, 1)
+      .then((movies) => {
+        const moviesInfo = movies.map((movie) => {
+          return {
+            title: movie.Title,
+            id: movie.imdbID,
+            poster: movie.Poster,
+            year: movie.Year,
+            rating: 'null', // TODO getRating
+          };
+        });
+        this.view.hideLoader();
+        this.view.showMovies(moviesInfo);
+        // TODO search first page of movies, show loader than result or error msg
+      })
+      .catch((error) => {
+        this.view.hideLoader();
+        this.view.showError(error);
       });
-      this.view.hideLoader();
-      this.view.showMovies(moviesInfo);
-      // TODO search first page of movies, show loader than result or error msg
-    });
   }
+
+  getMoviesWithRating() {}
 
   getMoreMovies() {
     // TODO search next page of movies and show
