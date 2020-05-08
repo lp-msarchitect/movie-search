@@ -23,17 +23,21 @@ export default class MovieSwiper extends Component {
 
   addMovie(movieInfo) {
     const movie = new Movie(movieInfo, this.global);
-    this.element.swiper.appendSlide(movie.element);
+    this.swiper.appendSlide(movie.element);
   }
 
   clear() {
-    this.element.swiper.removeAllSlides();
+    this.swiper.removeAllSlides();
+  }
+
+  on(event, handler) {
+    this.swiper.on(event, handler);
   }
 
   createElement() {
     const element = super.createElement();
 
-    const mySwiper = new Swiper(element, {
+    this.swiper = new Swiper(element, {
       // Optional parameters
       direction: 'horizontal',
       loop: false,

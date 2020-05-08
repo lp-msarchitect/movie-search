@@ -52,8 +52,11 @@ export default class View {
     this.hideLoader();
   }
 
-  showMovies(movies) {
+  clearMovies() {
     this.components.movieSwiper.clear();
+  }
+
+  showMovies(movies) {
     movies.forEach((movie) => {
       this.components.movieSwiper.addMovie(movie);
     });
