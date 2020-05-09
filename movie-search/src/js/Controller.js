@@ -82,6 +82,8 @@ export default class Controller {
         poster: movie.Poster,
         year: movie.Year,
         rating: movie.rating,
+        country: movie.Country,
+        genre: movie.Genre,
       };
     });
 

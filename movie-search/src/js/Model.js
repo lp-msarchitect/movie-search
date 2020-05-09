@@ -9,7 +9,7 @@ export default class Model {
 
     if (data.Response === 'True') {
       const moviesList = data.Search;
-      const ratedMoviesList = await this.setMoviesRating(moviesList);
+      const ratedMoviesList = await this.setMoviesAdditionInfo(moviesList);
       const ratedMoviesWithImagesList = await this.setMoviesPosters(
         ratedMoviesList
       );
@@ -32,14 +32,15 @@ export default class Model {
     return json.text[0];
   }
 
-  async setMoviesRating(movies) {
+  async setMoviesAdditionInfo(movies) {
     return await Promise.all(
       movies.map(async (movie) => {
         const url = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${this.apiKeys.omdb}`;
         const res = await fetch(url);
         const json = await res.json();
         console.log(json);
-
+        movie.Country = json.Country;
+        movie.Genre = json.Genre;
         movie.rating = json.imdbRating;
         return movie;
       })
