@@ -1,12 +1,77 @@
 $swiper-slide-color: black;
 
 .swiper-slide {
+  font-size: 1.25rem;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  &__container {
+    position: relative;
+    flex-basis: 150px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__img-container {
+    position: relative;
+  }
+
+  &__img-container:hover > &__info {
+    opacity: 1;
+  }
+
+  &__info {
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+    opacity: 0;
+    height: 150px;
+    padding: 1rem;
+    position: absolute;
+    color: white;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+  }
 
   &__title {
     color: $swiper-slide-color;
     text-decoration: underline;
+    font-weight: 600;
+    padding: 0.25rem 0;
+  }
+
+  &__year {
+    color: black;
+  }
+
+  &__rating {
+    position: absolute;
+    top: 5px;
+    left: -5px;
+    padding: 0.25rem 0.5rem;
+    font-weight: 800;
+    color: white;
+    border-radius: 5px;
+    background-color: green;
+
+    &--middle {
+      background-color: gray;
+    }
+
+    &--low {
+      background-color: red;
+    }
   }
 }
