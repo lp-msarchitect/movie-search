@@ -47,11 +47,8 @@ export default class Model {
   async setMoviesPosters(movies) {
     return await Promise.all(
       movies.map(async (movie) => {
-        const url = movie.Poster;
-
-        if (url === 'N/A') {
-          url = '/images/noposter.jpg';
-        }
+        const url =
+          movie.Poster === 'N/A' ? '/images/noposter.jpg' : movie.Poster;
 
         const res = await fetch(url);
 
