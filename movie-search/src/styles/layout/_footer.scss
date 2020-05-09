@@ -9,6 +9,8 @@ $back-ground-color: #2364aa;
   align-items: center;
   color: $text-color;
   background-color: $back-ground-color;
+  background-image: url(../../images/background.jpg);
+  background-size: cover;
 
   & a {
     color: inherit;
