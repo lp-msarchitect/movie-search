@@ -3,10 +3,12 @@ $back-ground-color: #2364aa;
 
 .footer {
   display: flex;
+  height: 50px;
+  padding: 0 15%;
   justify-content: space-between;
+  align-items: center;
   color: $text-color;
   background-color: $back-ground-color;
-  padding: 1rem 0;
 
   & a {
     color: inherit;
