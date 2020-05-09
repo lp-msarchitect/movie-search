@@ -1,5 +1,3 @@
-// TODO: ErrorComponent
-
 import MovieSwiper from './components/MovieSwiper';
 import Search from './components/Search';
 import Loader from './components/Loader';
@@ -13,11 +11,11 @@ export default class View {
   }
 
   showError(msg) {
-    const errorMsg = `
-      ${msg}
-      No results for ${this.components.search.value} 
-    `;
-    this.components.status.showError(errorMsg);
+    // const errorMsg = `
+    //   ${msg}
+    //   No results for ${this.components.search.value}
+    // `;
+    this.components.status.showError(msg);
   }
 
   showInfo(msg) {

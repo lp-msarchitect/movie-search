@@ -21,23 +21,18 @@ export default class MovieSwiper extends Component {
     super(html, global);
   }
 
-  async addMovies(movies) {
-    const promises = movies.map((movieInfo) => {
+  addMovies(movies) {
+    const slides = movies.map((movieInfo) => {
       const movie = new Movie(movieInfo, this.global);
-      return movie.loadImage();
+      return movie.element;
     });
 
-    movies = await Promise.all(promises);
-
-    movies.forEach((movie) => {
-      this.swiper.appendSlide(movie.element);
-    });
-
-    return movies;
+    this.swiper.appendSlide(slides);
   }
 
   clear() {
     this.swiper.removeAllSlides();
+    this.swiper.update();
   }
 
   on(event, handler) {
@@ -52,7 +47,7 @@ export default class MovieSwiper extends Component {
       direction: 'horizontal',
       loop: false,
       slidesPerView: 1,
-      // updateOnWindowResize: true,
+      speed: 200,
       // Navigation arrows
       navigation: {
         nextEl: element.querySelector('.swiper-button-next'),
