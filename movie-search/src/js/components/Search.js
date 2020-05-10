@@ -7,7 +7,7 @@ export default class Search extends Component {
                     <input class="search__input" id="search-input" type="text" placeholder="Search movie" autofocus/>
                     <div class="search__controls">
                     <button class="search__control search__control--clear" type="reset"></button>
-                    <button class="search__control search__control--keyboard"></button>
+                    <button class="search__control search__control--keyboard" type="reset"></button>
                     <button class="search__start button type="submit" id="search-btn">Search</button>
                     </div>
                 </form>
