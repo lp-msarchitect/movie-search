@@ -16,14 +16,14 @@ export default class Search extends Component {
     this.handlers = [];
 
     this.addListeners();
-    // TODO removeListeners
   }
 
   addListeners() {
-    this.element.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.broadcast(this.value);
-    });
+    this.element.addEventListener('submit', this.broadcast.bind(this));
+  }
+
+  removeListeners() {
+    this.element.removeListeners('submit', this.broadcast.bind(this));
   }
 
   clear() {
@@ -40,9 +40,9 @@ export default class Search extends Component {
     return inputElement.value;
   }
 
-  broadcast(msg) {
+  broadcast() {
     this.handlers.forEach((handler) => {
-      handler(msg);
+      handler(this.value);
     });
   }
 
@@ -50,5 +50,10 @@ export default class Search extends Component {
     this.handlers.push(handler);
   }
 
-  // TODO unsubscribe
+  unsubscribe(subscriber) {
+    const index = this.handlers.indexOf(subscriber);
+    if (index !== -1) {
+      this.handlers.splice(index, 1);
+    }
+  }
 }
