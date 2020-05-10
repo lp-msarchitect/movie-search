@@ -60,7 +60,7 @@ export default class Model {
         }
 
         const imgBlob = await res.blob();
-        const imgObjectURL = URL.createObjectURL(imgBlob); // TODO Сросить у ментора про URL
+        const imgObjectURL = URL.createObjectURL(imgBlob);
         movie.Poster = imgObjectURL;
         return movie;
       })
