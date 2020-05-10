@@ -1,5 +1,33 @@
 $swiper-slide-color: black;
 
+.swiper-overcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.swiper-button {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-top: 10px solid #414042;
+  border-right: 10px solid #414042;
+  outline: none;
+  cursor: pointer;
+}
+
+.swiper-button--disabled {
+  border-color: #939598;
+}
+
+.swiper-button--next {
+  transform: rotate(45deg);
+}
+
+.swiper-button--prev {
+  transform: rotate(-135deg);
+}
+
 .swiper-slide {
   font-size: 1.25rem;
 

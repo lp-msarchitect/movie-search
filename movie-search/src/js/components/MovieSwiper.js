@@ -5,6 +5,8 @@ import Movie from './Movie';
 export default class MovieSwiper extends Component {
   constructor(global) {
     const html = `
+                <div class="swiper-overcontainer">
+                <div class="swiper-button swiper-button--prev"></div>
                 <!-- Slider main container -->
                 <div class="swiper-container">
                 <!-- Additional required wrapper -->
@@ -13,8 +15,11 @@ export default class MovieSwiper extends Component {
                 </div>
 
                 <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <!--<div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>-->
+                </div>
+                  
+                  <div class="swiper-button swiper-button--next"></div>
                 </div>
     `;
 
@@ -42,7 +47,7 @@ export default class MovieSwiper extends Component {
   createElement() {
     const element = super.createElement();
 
-    this.swiper = new Swiper(element, {
+    this.swiper = new Swiper(element.querySelector('.swiper-container'), {
       // Optional parameters
       direction: 'horizontal',
       loop: false,
@@ -50,8 +55,9 @@ export default class MovieSwiper extends Component {
       speed: 200,
       // Navigation arrows
       navigation: {
-        nextEl: element.querySelector('.swiper-button-next'),
-        prevEl: element.querySelector('.swiper-button-prev'),
+        nextEl: element.querySelector('.swiper-button--next'),
+        prevEl: element.querySelector('.swiper-button--prev'),
+        disabledClass: 'swiper-button--disabled',
       },
       breakpoints: {
         640: {
