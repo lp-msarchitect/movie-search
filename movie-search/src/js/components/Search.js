@@ -40,7 +40,8 @@ export default class Search extends Component {
     return inputElement.value;
   }
 
-  broadcast() {
+  broadcast(e) {
+    e.preventDefault();
     this.handlers.forEach((handler) => {
       handler(this.value);
     });
