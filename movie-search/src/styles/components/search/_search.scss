@@ -11,12 +11,19 @@
     height: 2em;
     transform: translateY(-50%);
     background-image: url('001-search.svg');
+    @media (max-width: 520px) {
+      display: none;
+    }
   }
 
   &__input {
-    flex: 1 1 auto;
+    flex: 1 1 100%;
+    width: 100%;
     padding: 0.25rem 3rem 0.25rem;
     outline-color: black;
+    @media (max-width: 520px) {
+      padding-left: 0.5rem;
+    }
   }
 
   &__controls {
@@ -31,16 +38,15 @@
     background-size: cover;
     border: none;
 
-    &--keyboard {
-      left: -2.5em;
-      background-image: url('./003-keyboard.svg');
-    }
-
     &--clear {
       outline: none;
       top: 0.1rem;
-      left: -5em;
+      left: -2.5em;
       background-image: url('./002-close.svg');
+
+      @media (max-width: 520px) {
+        display: none;
+      }
     }
   }
 }

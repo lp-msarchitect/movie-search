@@ -60,15 +60,15 @@ export default class MovieSwiper extends Component {
         disabledClass: 'swiper-button--disabled',
       },
       breakpoints: {
-        640: {
+        980: {
           slidesPerView: 2,
-          spaceBetween: 20,
+          spaceBetween: 50,
         },
-        860: {
+        1250: {
           slidesPerView: 3,
           spaceBetween: 40,
         },
-        1200: {
+        1600: {
           slidesPerView: 4,
           spaceBetween: 50,
         },
