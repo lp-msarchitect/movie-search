@@ -1,5 +1,5 @@
   ## Movie Search
- ![](https://imgur.com/Ivggox1)
+ ![](https://i.imgur.com/Ivggox1.gif)
  
  Search movies in https://www.imdb.com/ with using [OMDb API](http://www.omdbapi.com/) [here](https://lp-msarchitect-movie-search.netlify.app/).  
  
