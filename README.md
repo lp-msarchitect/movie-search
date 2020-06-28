@@ -1,7 +1,9 @@
   ## Movie Search
  ![](https://i.imgur.com/Ivggox1.gif)
  
- Search movies in https://www.imdb.com/ with using [OMDb API](http://www.omdbapi.com/) [here](https://lp-msarchitect-movie-search.netlify.app/).  
+ Search movies in https://www.imdb.com/ with using [OMDb API](http://www.omdbapi.com/).
+ 
+ [Demo](https://lp-msarchitect-movie-search.netlify.app/).  
  
  You can search for movies in English or Russian (the result is displayed in English).
  Click on movie tile for go to movie page
